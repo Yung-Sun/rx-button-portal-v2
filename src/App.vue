@@ -79,7 +79,9 @@ export default {
   },
   methods:{
     handleJump(routeName){
-      this.$router.push({name: routeName})
+      if (this.$route.name !== routeName){
+        this.$router.push({name: routeName})
+      }
     }
   }
 }

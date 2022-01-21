@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
+//引入通用全局样式
+import './assets/style/global.scss'
+import './assets/style/variable.scss'
 
 Vue.config.productionTip = false
 Vue.use(Antd);
@@ -15,7 +18,7 @@ const IconFont = Icon.createFromIconfontCN({
 Vue.component('IconFont', IconFont)
 
 import hl from 'highlight.js' // 导入代码高亮文件
-import 'highlight.js/styles/a11y-dark.css' // 导入代码高亮样式
+import 'highlight.js/styles/atom-one-dark.css' // 导入代码高亮样式
 Vue.directive('highlight', function (el) {
     const blocks = el.querySelectorAll('pre code')
     blocks.forEach((block) => {

@@ -3,8 +3,8 @@
     <header>
       <a-tooltip>
         <template #title>{{ isHide ? '展开代码' : '收起代码' }}</template>
-        <div class="toggle button" :class="{isHide}">
-          <a-icon type="right" theme="outlined" @click="isHide = !isHide"/>
+        <div class="toggle button" :class="{isHide}" @click="isHide = !isHide">
+          <a-icon type="right" theme="outlined"/>
         </div>
       </a-tooltip>
       <a-tooltip>
@@ -25,7 +25,17 @@
 import Clipboard from 'clipboard';
 
 export default {
-  props: ['content', 'type'],
+  // props: ['content', 'type'],
+  props:{
+    content:{
+      type: String,
+      required: true
+    },
+    type:{
+      default: 'javascript',
+      type: String
+    }
+  },
   data() {
     return {
       activeKey: ['1'],
@@ -36,7 +46,7 @@ export default {
     handleCopy() {
       let clipboard = new Clipboard('.copy')
       clipboard.on('success', () => {
-        this.$message.success('复制成功')
+        this.$message.success('复制到剪贴板了哇')
         clipboard.destroy()
       })
       clipboard.on('error', () => {

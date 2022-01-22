@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 const Install = () => import("../views/TheInstall.vue")
 const Start = () => import("../views/TheStart.vue")
 const Guide = () => import("../views/TheGuide.vue")
-const Principle = () => import("../views/ThePrinciple.vue")
+const NotFound = ()=> import("../views/NotFound.vue")
 
 Vue.use(VueRouter)
 
@@ -25,18 +25,18 @@ const routes = [
     component: Guide
   },
   {
-    path: "/principle",
-    name: "principle",
-    component: Principle
+    path: "/404",
+    name: "NotFound",
+    component: NotFound
   },
   {
     path: '/',
     redirect: '/install'
   },
-  // {
-  //   path: '*',
-  //   redirect: '/404'
-  // }
+  {
+    path: '*',
+    redirect: '/404'
+  }
 ]
 
 const router = new VueRouter({

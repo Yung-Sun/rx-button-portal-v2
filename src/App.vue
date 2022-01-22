@@ -17,7 +17,7 @@
         <h1>{{ pageTitle }}</h1>
       </a-layout-header>
       <a-layout-content style="margin: 0 16px">
-        <router-view/>
+        <router-view style="padding: 20px 10px;"/>
       </a-layout-content>
       <a-layout-footer style="text-align: center;color: #aaaaaa;">
         RX-Button ©2022 created by Yung Sun
@@ -30,11 +30,15 @@
 
 export default {
   name: 'rx-button-portal-v2',
-  watch:{
-    $route:{
-      handler(value){
-        let currentMenuItem = this.menuItemList.filter(item => item.routeName === value.name)[0]
-        this.selectedKeys = [currentMenuItem.key]
+  watch: {
+    $route: {
+      handler(value) {
+        if (value.name === 'NotFound'){
+          this.selectedKeys = []
+        }else{
+          let currentMenuItem = this.menuItemList.filter(item => item.routeName === value.name)[0]
+          this.selectedKeys = [currentMenuItem.key]
+        }
       },
       deep: true
     }
@@ -61,25 +65,23 @@ export default {
           key: '3',
           icon: 'icon-book',
           routeName: 'guide'
-        },
-        {
-          name: '原理简介',
-          key: '4',
-          icon: 'icon-bulb',
-          routeName: 'principle'
         }
       ]
     }
   },
-  computed:{
-    pageTitle(){
-      let currentMenuItem = this.menuItemList.filter(item => item.key === this.selectedKeys[0])[0]
-      return currentMenuItem.name
+  computed: {
+    pageTitle() {
+      if (this.$route.name !== 'NotFound') {
+        let currentMenuItem = this.menuItemList.filter(item => item.key === this.selectedKeys[0])[0]
+        return currentMenuItem.name
+      }else{
+        return 'Oops ~'
+      }
     }
   },
-  methods:{
-    handleJump(routeName){
-      if (this.$route.name !== routeName){
+  methods: {
+    handleJump(routeName) {
+      if (this.$route.name !== routeName) {
         this.$router.push({name: routeName})
       }
     }

@@ -25,7 +25,6 @@
 import Clipboard from 'clipboard';
 
 export default {
-  // props: ['content', 'type'],
   props:{
     content:{
       type: String,

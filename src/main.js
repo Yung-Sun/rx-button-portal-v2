@@ -26,6 +26,10 @@ Vue.directive('highlight', function (el) {
     })
 })
 
+import RXButton from 'rx-button'
+Vue.component('rx-button', RXButton)
+
+
 new Vue({
     router,
     render: h => h(App)

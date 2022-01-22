@@ -120,6 +120,7 @@ export default {
 }
 
 .ant-layout-footer {
+  margin-top: 20px;
   transition: all 5s;
   cursor: default;
 

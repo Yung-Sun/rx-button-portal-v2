@@ -1,13 +1,21 @@
 <!--suppress HtmlUnknownTag -->
 <template>
   <a-layout style="min-height: 100vh">
-    <a-layout-sider id="app-layout-side" v-model:collapsed="collapsed" :collapsible="true">
+    <a-layout-sider
+      id="app-layout-side"
+      v-model:collapsed="collapsed"
+      :collapsible="true"
+    >
       <div class="logo" title="RX-Btn暂时还没有logo😅，放个临时工在这">
         <span>🦴</span>
       </div>
       <a-menu theme="dark" v-model:selectedKeys="selectedKeys" mode="inline">
-        <a-menu-item :key="item.key" v-for="item in menuItemList" @click="handleJump(item.routeName)">
-          <icon-font :type="item.icon"/>
+        <a-menu-item
+          :key="item.key"
+          v-for="item in menuItemList"
+          @click="handleJump(item.routeName)"
+        >
+          <icon-font :type="item.icon" />
           <span>{{ item.name }}</span>
         </a-menu-item>
       </a-menu>
@@ -17,9 +25,9 @@
         <h1>{{ pageTitle }}</h1>
       </a-layout-header>
       <a-layout-content style="margin: 0 16px">
-        <router-view style="padding: 20px 10px;"/>
+        <router-view style="padding: 20px 10px" />
       </a-layout-content>
-      <a-layout-footer style="text-align: center;color: #aaaaaa;">
+      <a-layout-footer style="text-align: center; color: #aaaaaa">
         RX-Button ©2022 created by Yung Sun
       </a-layout-footer>
     </a-layout>
@@ -27,21 +35,22 @@
 </template>
 
 <script>
-
 export default {
   name: 'rx-button-portal-v2',
   watch: {
     $route: {
       handler(value) {
-        if (value.name === 'NotFound'){
-          this.selectedKeys = []
-        }else{
-          let currentMenuItem = this.menuItemList.filter(item => item.routeName === value.name)[0]
-          this.selectedKeys = [currentMenuItem.key]
+        if (value.name === 'NotFound') {
+          this.selectedKeys = [];
+        } else {
+          let currentMenuItem = this.menuItemList.filter(
+            (item) => item.routeName === value.name
+          )[0];
+          this.selectedKeys = [currentMenuItem.key];
         }
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   data() {
     return {
@@ -52,41 +61,49 @@ export default {
           name: '安装说明',
           key: '1',
           icon: 'icon-cloud-download',
-          routeName: 'install'
+          routeName: 'install',
         },
         {
           name: '快速上手',
           key: '2',
           icon: 'icon-desktop',
-          routeName: 'start'
+          routeName: 'start',
         },
         {
           name: '使用指南',
           key: '3',
           icon: 'icon-book',
-          routeName: 'guide'
-        }
-      ]
-    }
+          routeName: 'guide',
+        },
+        {
+          name: '其他事项',
+          key: '4',
+          icon: 'icon-bulb',
+          routeName: 'other',
+        },
+      ],
+    };
   },
   computed: {
     pageTitle() {
       if (this.$route.name !== 'NotFound') {
-        let currentMenuItem = this.menuItemList.filter(item => item.key === this.selectedKeys[0])[0]
-        return currentMenuItem.name
-      }else{
-        return 'Oops ~'
+        let currentMenuItem = this.menuItemList.filter(
+          (item) => item.key === this.selectedKeys[0]
+        )[0];
+        return currentMenuItem.name;
+      } else {
+        return 'Oops ~';
       }
-    }
+    },
   },
   methods: {
     handleJump(routeName) {
       if (this.$route.name !== routeName) {
-        this.$router.push({name: routeName})
+        this.$router.push({ name: routeName });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -101,11 +118,11 @@ export default {
     cursor: pointer;
     padding: 10px 12px;
     border-radius: 100px;
-    transition: all .4s;
+    transition: all 0.4s;
 
     &:hover {
       background: rgba(255, 255, 255, 0.1);
-      transition: all .4s;
+      transition: all 0.4s;
     }
   }
 }

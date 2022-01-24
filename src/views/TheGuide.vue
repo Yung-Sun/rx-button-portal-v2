@@ -35,6 +35,16 @@
         </div>
       </section>
     </div>
+    <footer>
+      <router-link to="/install">
+        <a-icon type="left" />
+        快速上手
+      </router-link>
+      <router-link to="/other"
+        >其他事项
+        <a-icon type="right" />
+      </router-link>
+    </footer>
   </div>
 </template>
 
@@ -99,6 +109,17 @@ export default {
 .tableArea {
   > div {
     margin-bottom: 40px;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  margin-top: 50px;
+
+  > span {
+    cursor: pointer;
   }
 }
 </style>

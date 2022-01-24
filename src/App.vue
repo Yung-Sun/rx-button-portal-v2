@@ -1,6 +1,7 @@
 <!--suppress HtmlUnknownTag -->
 <template>
   <a-layout style="min-height: 100vh">
+    <a-back-top />
     <a-layout-sider
       id="app-layout-side"
       v-model:collapsed="collapsed"
@@ -25,7 +26,9 @@
         <h1>{{ pageTitle }}</h1>
       </a-layout-header>
       <a-layout-content style="margin: 0 16px">
-        <router-view style="padding: 20px 10px" />
+        <router-view
+          style="padding: 20px 10px; max-width: 1000px; margin: 0 auto"
+        />
       </a-layout-content>
       <a-layout-footer style="text-align: center; color: #aaaaaa">
         RX-Button ©2022 created by Yung Sun

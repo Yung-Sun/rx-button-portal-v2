@@ -28,6 +28,7 @@ export default {
         {
           title: '类型',
           dataIndex: 'type',
+          width: 200,
         },
         {
           title: '默认值',

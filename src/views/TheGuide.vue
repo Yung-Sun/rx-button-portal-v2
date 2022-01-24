@@ -27,7 +27,12 @@
       </section>
       <section>
         <h2>API</h2>
-        <AttributesTable />
+        <div class="tableArea">
+          <AttributesTable />
+          <EventsTable />
+          <MethodsTable />
+          <SlotTable />
+        </div>
       </section>
     </div>
   </div>
@@ -35,9 +40,13 @@
 
 <script>
 import AttributesTable from '@/components/TheGuide/AttributesTable.vue';
+import EventsTable from '@/components/TheGuide/EventsTable.vue';
+import MethodsTable from '@/components/TheGuide/MethodsTable.vue';
+import SlotTable from '@/components/TheGuide/SlotTable.vue';
+
 export default {
   name: 'TheGuide',
-  components: { AttributesTable },
+  components: { AttributesTable, EventsTable, MethodsTable, SlotTable },
 
   methods: {
     handleClickSuccess() {
@@ -85,6 +94,11 @@ export default {
 
   .rx-button {
     margin: 0 10px;
+  }
+}
+.tableArea {
+  > div {
+    margin-bottom: 40px;
   }
 }
 </style>
